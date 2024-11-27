@@ -2,6 +2,7 @@
 @use "../modules/responsive";
 @use "../modules/drawer";
 @use "../modules/time";
+@use "../modules/table";
 
 // region //////////////////////////////////////////////// Responsive Behaviors
 
@@ -28,14 +29,23 @@ html.-desktop, html.-desktop > body {
 
 @include responsive.md-down() {
   @include time.md-down;
+  @if system.$table-responsive == md {
+    @include table.responsive;
+  }
 }
 
 @include responsive.sm-down() {
   @include time.sm-down;
+  @if system.$table-responsive == sm {
+    @include table.responsive;
+  }
 }
 
 @include responsive.xs-only() {
   @include time.xs-down;
+  @if system.$table-responsive == xs {
+    @include table.responsive;
+  }
 }
 
 // endregion ///////////////////////////////////////////// End Responsive Behaviors

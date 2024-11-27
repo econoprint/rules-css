@@ -27,6 +27,7 @@ input, textarea, select {
   --color-bg-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-autofill-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-text-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
+  --color-value-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
   --color-placeholder-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
   --color-outline-disabled: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), var(--opacity-disabled-bg));
   &:focus {
@@ -58,25 +59,6 @@ input, textarea, select, form .wrapper {
   border: var(--border-width) solid var(--color-outline);
   box-shadow: none; // Override default in some browsers
   width: var(--input-width);
-}
-
-// TODO: Read Only
-input, textarea, select  {
-  &:disabled, fieldset[disabled] & {
-    color: var(--color-value-disabled);
-    background-color: var(--color-bg-disabled);
-    border-color: var(--color-outline-disabled);
-    opacity: 1; // iOS fix for unreadable disabled content; see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Browser_compatibility
-  }
-  &:disabled, fieldset[disabled] {
-    cursor: sys.$cursor-disabled;
-  }
-  &:disabled + label, fieldset[disabled] & + label {
-    color: var(--color-label-disabled);
-  }
-  &:focus {
-    outline-color: var(--color-outline) !important;
-  }
 }
 
 input, textarea {

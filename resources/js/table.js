@@ -146,7 +146,7 @@ class TFoot extends TableSection {
 class Table extends Component {
   static selector = "table";
 
-  options = { animateFor: 600, filtered: '-filtered', sorted: '-sorted', matched: '-match' }
+  options = { animateFor: 600, sorted: '-sorted' }
   sortKey = "none";
   sortOrder = "none";
 
@@ -229,13 +229,9 @@ class Table extends Component {
 
   filter(q) {
     if(q) {
-      let cls = this.options.matched;
       this.body.rows.forEach(row => {
-        row.el.classList.toggle( cls, row.search( q ) );
+        row.el.toggleAttribute('hidden', !row.search(q));
       });
-      this.el.classList.add( this.options.filtered );
-    } else {
-      this.el.classList.remove(this.options.filtered);
     }
   }
 
@@ -310,14 +306,13 @@ class TableFilter extends Component {
   static selector = "input[type=search][aria-controls=table*]";
 
   input;
-  target;
 
   get _controls() {
     return this.el.getAttribute('aria-controls');
   }
 
   get target() {
-    return this.el.parent().querySelector(this.controls)
+    return this.el.closest('form').querySelector(this._controls);
   }
 
   constructor(el) {
