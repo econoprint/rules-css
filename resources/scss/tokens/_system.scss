@@ -393,6 +393,7 @@ $columns: spacing.$columns;
 // Responsive
 $screen-device-min: screen.$device-min;
 $screen-desktop-min: screen.$desktop-min;
+$screen-overflow: screen.$overflow;
 
 // Width Breakpoints
 $screen-xs-min: screen.$xs-min;
@@ -427,6 +428,12 @@ $layout-height-footer: layout.$height-footer;
   --row-footer: 2;
   --column-main: 1;
   --column-sidebar: 1;
+}
+
+@mixin responsive() {
+  --width-device:  #{$screen-device-min};
+  --width-desktop: #{$screen-desktop-min};
+  --overflow-body: #{$screen-overflow};
 }
 
 // Stacking
@@ -471,6 +478,11 @@ $bg-image-number: icons.$bg-image-number;
 $table-sort-position: table.$sort-position !default;
 $table-responsive: table.$responsive !default;
 
+// Scrollbar
+$scrollbar-inline-width: decor.$scrollbar-inline-width;
+$scrollbar-inline-color: decor.$scrollbar-inline-color;
+$scrollbar-inline-thumb: decor.$scrollbar-inline-thumb;
+
 // Opacity
 $opacity-bg-disabled: decor.$opacity-bg-disabled !default;
 $opacity-text-disabled: decor.$opacity-text-disabled !default;
@@ -491,6 +503,9 @@ $opacity-busy: decor.$opacity-busy !default;
   --border-radius: #{ref.$radius-border};
   --modal-filter: #{decor.$filter-dialog};
   --modal-bg: #{decor.$color-bg-dialog};
+  --scrollbar-inline-width: #{$scrollbar-inline-width};
+  --scrollbar-inline-color: #{$scrollbar-inline-color};
+  --scrollbar-inline-thumb: #{$scrollbar-inline-thumb};
   --opacity-hover: #{if(math.is-unitless($opacity-hover), $opacity-hover, math.div($opacity-hover, 100%))};
   --opacity-focus: #{if(math.is-unitless($opacity-focus), $opacity-focus, math.div($opacity-focus, 100%))};
   --opacity-pressed: #{if(math.is-unitless($opacity-pressed), $opacity-pressed, math.div($opacity-pressed, 100%))};

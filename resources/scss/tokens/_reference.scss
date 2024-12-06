@@ -38,6 +38,7 @@ $screen-sm-min: 576px;
 $screen-md-min: 768px;
 $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
+$screen-overflow: hidden;
 $device-min: 320px;
 $desktop-min: $screen-md-min;
 $dpi-hi: 150 !default;
@@ -67,6 +68,9 @@ $opacity-hover: 8%;
 $opacity-focus: 12%;
 $opacity-pressed: 12%;
 $opacity-busy: .5;
+$scrollbar-inline-width: 4px;
+$scrollbar-inline-color: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), .2);
+$scrollbar-inline-thumb: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), .5);
 
 // Opacity
 $opacity-bg-disabled: 12%;
