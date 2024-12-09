@@ -1,5 +1,5 @@
 // SASS Modules
-@use "sass:color";
+@use "../modules/color/sass.color" as color;
 @use "sass:math";
 @use "sass:map";
 // Reference Tokens
@@ -264,9 +264,9 @@ $theme-on-c3-link: feature.$on-alt-link !default;
   --color-divider: var(--theme-divider);
   --color-inverse-bg: var(--theme-inverse);
   --color-inverse-text: var(--theme-on-inverse);
-  --color-inverse-link: var(--theme-link-inverse);
-  --color-inverse-link-focus: var(--theme-link-inverse-focus); // TODO: Fix Me
-  --color-inverse-link-hover: var(--theme-link-inverse-hover); // TODO: Fix Me
+  --color-inverse-link: var(--theme-link-on-inverse);
+  --color-inverse-link-focus: var(--theme-link-on-inverse-focus); // TODO: Fix Me
+  --color-inverse-link-hover: var(--theme-link-on-inverse-hover); // TODO: Fix Me
 }
 
 // endregion ///////////////////////////////////////////// End Color & Theme
@@ -364,8 +364,8 @@ $columns: spacing.$columns;
   // Input Spacing
   --input-padding-x: calc(var(--spacer) * .75);
   --input-padding-y: calc(var(--spacer) * .5);
-  --input-padding-half-x: calc(var(--input-pading-x) / 2);
-  --input-padding-half-y: calc(var(--input-pading-y) / 2);
+  --input-padding-half-x: calc(var(--input-padding-x) / 2);
+  --input-padding-half-y: calc(var(--input-padding-y) / 2);
   --input-height: calc(var(--input-font-size) + (var(--input-padding-y) * 2));
   --label-height: calc((var(--label-font-size) * var(--input-line-height)) + var(--input-padding-y) + (var(--input-padding-y) / 2));
   --label-width: 10%;

@@ -1,10 +1,11 @@
 @use "../tokens/system" as sys;
+@forward "picker";
 
 input[type=datetime-local], input[type=time] {
   @extend %picker;
   &::-webkit-inner-spin-button {
     margin-left: calc(var(--input-padding-x) / 2);
-    color: var(--input-icon);
+    color: var(--color-icon);
   }
 }
 
