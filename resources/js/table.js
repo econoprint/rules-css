@@ -20,7 +20,16 @@ class Td extends TableElement {
   }
 
   get text() {
-    return this.el.textContent || this.el.innerText;
+    let text = this.el.textContent || this.el.innerText;
+    let abbr = this.el.querySelector('abbr');
+    if(abbr) {
+      let title = abbr.hasAttribute('title') ? abbr.getAttribute('title') : abbr.getAttribute('data-tooltip');
+      if(null !== title && undefined !== title) {
+        text = text + ' ' + title;
+      }
+    }
+
+    return text.trim();
   }
 
   get data() {
@@ -301,7 +310,7 @@ class Table extends Component {
  * @property input {SearchInput}
  */
 class TableFilter extends Component {
-  static selector = "input[type=search][aria-controls=table*]";
+  static selector = "input[type=search][aria-controls^=table]";
 
   input;
 
