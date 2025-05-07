@@ -5,10 +5,11 @@
 @use "../../tokens/config/color" as base;
 @use "../palette/palette";
 @use "neutrals";
+@use "bg";
 
-$major: palette.generate(base.$major);
-$minor: palette.generate(base.$minor);
-$feature: palette.generate(base.$feature);
+$a1: palette.generate(base.$a1);
+$a2: palette.generate(base.$a2);
+$a3: palette.generate(base.$a3);
 $danger: palette.generate(base.$danger);
 $success: palette.generate(base.$success);
 $warning: palette.generate(base.$warning);
@@ -18,19 +19,27 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
 
 @function tone($name, $tone) {
   $quoted: string.quote($name);
-  @debug $quoted;
-  @if $quoted == "major" {
-    @return major($tone);
-  } @else if $quoted == "minor" {
-    @return minor($tone);
-  } @else if $quoted == "feature" {
-    @return feature($tone);
+
+  @if $quoted == "a1" {
+    @return a1($tone);
+  } @else if $quoted == "a2" {
+    @return a2($tone);
+  } @else if $quoted == "a3" {
+    @return a3($tone);
   } @else if $quoted == "danger" {
     @return danger($tone);
   } @else if $quoted == "warning" {
     @return warning($tone);
   } @else if $quoted == "success" {
     @return success($tone)
+  }
+
+  @if $quoted == "major" {
+    @return a1($tone);
+  } @else if $quoted == "minor" {
+    @return a2($tone);
+  } @else if $quoted == "feature" {
+    @return a3($tone);
   } @else if $quoted == "default" {
     @return default($tone);
   } @else if $quoted == "bg" {
@@ -40,20 +49,16 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
   }
 }
 
-@function major($tone) {
-  @return map.get($major, string.quote(#{$tone}));
+@function a1($tone) {
+  @return map.get($a1, string.quote(#{$tone}));
 }
 
-@function minor($tone) {
-  @return map.get($minor, string.quote(#{$tone}));
+@function a2($tone) {
+  @return map.get($a2, string.quote(#{$tone}));
 }
 
-@function feature($tone) {
-  @return map.get($feature, string.quote(#{$tone}));
-}
-
-@function danger($tone) {
-  @return map.get($danger, string.quote(#{$tone}));
+@function a3($tone) {
+  @return map.get($a3, string.quote(#{$tone}));
 }
 
 @function danger($tone) {
@@ -73,11 +78,11 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
 }
 
 @function bg($tone) {
-  @return neutrals.major($tone);
+  @return bg.a1($tone);
 }
 
 @function neutral($tone) {
-  @return neutrals.major-alt($tone);
+  @return neutrals.a1($tone);
 }
 
 @function tint($foreground, $percent-opacity) {

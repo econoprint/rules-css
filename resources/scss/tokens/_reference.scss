@@ -69,8 +69,8 @@ $opacity-focus: 12%;
 $opacity-pressed: 12%;
 $opacity-busy: .5;
 $scrollbar-inline-width: 4px;
-$scrollbar-inline-color: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), .2);
-$scrollbar-inline-thumb: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), .5);
+$scrollbar-inline-color: rgba(var(--theme-outline-rgb) / .2);
+$scrollbar-inline-thumb: rgba(var(--theme-outline-rgb) / .5);
 
 // Opacity
 $opacity-bg-disabled: 12%;
@@ -101,9 +101,9 @@ $table-sort-position: before;
 $table-responsive: sm;
 
 // Color
-$color-base-major: #2cb2e8;
-$color-base-minor: #009688;
-$color-base-feature: #03a9f4;
+$color-base-a1: #2cb2e8;
+$color-base-a2: #009688;
+$color-base-a3: #03a9f4;
 $color-base-success: #45ac49;
 $color-base-danger: #f44336;
 $color-base-warning: #ffc107;
