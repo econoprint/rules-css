@@ -18,16 +18,15 @@
 @use "config/icons";
 @use "config/table";
 @use "config/decoration" as decor;
+@use "config/roles";
+@use "config/n1";
+@use "config/n2";
 @use "config/a1";
 @use "config/a2";
 @use "config/a3";
 @use "config/success";
 @use "config/danger";
 @use "config/warning";
-@use "config/a3";
-@use "config/n1";
-@use "config/n2";
-@use "config/roles";
 
 // region //////////////////////////////////////////////// Features
 
@@ -144,9 +143,9 @@ $a3-on-c1-link: a3.$on-c1-link;
   --n1-60-rgb: #{color.rgb(n1.$tone-60)};
   --n1-70-rgb: #{color.rgb(n1.$tone-70)};
   --n1-80-rgb: #{color.rgb(n1.$tone-80)};
-  --n1-90-rgb: #{color.rgb(n2.$tone-90)};
-  --n1-92-rgb: #{color.rgb(n2.$tone-92)};
-  --n1-94-rgb: #{color.rgb(n2.$tone-94)};
+  --n1-90-rgb: #{color.rgb(n1.$tone-90)};
+  --n1-92-rgb: #{color.rgb(n1.$tone-92)};
+  --n1-94-rgb: #{color.rgb(n1.$tone-94)};
   --n1-95-rgb: #{color.rgb(n1.$tone-95)};
   --n1-96-rgb: #{color.rgb(n1.$tone-96)};
   --n1-98-rgb: #{color.rgb(n1.$tone-98)};
@@ -260,6 +259,9 @@ $a3-on-c1-link: a3.$on-c1-link;
 }
 
 @mixin contexts() {
+  @include a1.rgb;
+  @include a2.rgb;
+  @include a3.rgb;
   @include a1.properties;
   @include a2.properties;
   @include a3.properties;
@@ -270,6 +272,7 @@ $a3-on-c1-link: a3.$on-c1-link;
 
 //noinspection DuplicatedCode
 @mixin theme() {
+  --body-bg: #{a1.$body};
   @include a1.theme;
 }
 
@@ -487,6 +490,7 @@ $layout-height-footer: layout.$height-footer;
   --width-device:  #{$screen-device-min};
   --width-desktop: #{$screen-desktop-min};
   --overflow-body: #{$screen-overflow};
+  --max-width: 100%;
 }
 
 // Stacking

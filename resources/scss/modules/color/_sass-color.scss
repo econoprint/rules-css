@@ -1,51 +1,71 @@
 @use "sass:color";
 @use "sass:meta";
 
+@function to-rgb($color, $method: local-minde) {
+  //noinspection CssInvalidFunction
+  @return color.to-gamut(color.to-space($color, rgb),$method: $method)
+}
+
 @function red($color) {
-  @if meta.function-exists("channel", "color") {
-    @return color.channel($color, "red", $space: rgb);
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(to-rgb($color), "red");
   } @else {
     @return color.red($color);
   }
 }
 
 @function green($color) {
-  @if meta.function-exists("channel", "color") {
-    @return color.channel($color, "green", $space: rgb);
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(to-rgb($color), "green");
   } @else {
     @return color.green($color);
   }
 }
 
 @function blue($color) {
-  @if meta.function-exists("channel", "color") {
-    @return color.channel($color, "blue", $space: rgb);
+  @if(function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(to-rgb($color), "blue");
   } @else {
     @return color.blue($color);
   }
 }
 
-@function hue($color) {
-  @if meta.function-exists('channel', color) {
-    @return color.channel($color, "hue", $space: hsl);
+@function hue($color, $space: hsl) {
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(color.to-space($color, $space), "hue");
   } @else {
     @return color.hue($color);
   }
 }
 
 @function saturation($color) {
-  @if meta.function-exists("channel", "color") {
-    @return color.channel($color, "saturation", $space: hsl);
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(color.to-space($color, hsl), "saturation");
   } @else {
     @return color.saturation($color);
   }
 }
 
 @function lightness($color) {
-  @if meta.function-exists("channel", "color") {
-    @return color.channel($color, "lightness", $space: hsl);
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(color.to-space($color, hsl), "lightness");
   } @else {
     @return color.lightness($color);
+  }
+}
+
+@function chroma($color, $space: lch) {
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(color.to-space($color, $space), "hue");
+  } @else {
+    @error "DartSASS v1.79 is required for this function."
   }
 }
 
