@@ -1,6 +1,5 @@
-
-( function ( w, d ) {
-  let rules = {
+class Rules {
+  static components = {
     tab: Tab,
     tabs: TabList,
     toggle: ToggleButton,
@@ -13,22 +12,38 @@
     tooltip: Tooltip,
     table: Table,
     timeInput: TimeInput,
-    time: Time
+    time: Time,
+    filters: FilterFieldset,
   };
 
-  function initialize(key, selector = null) {
-    let func = rules[key];
+  fn = {};
+
+  constructor() {
+    this.fn = Rules.components;
+  }
+
+  _build(key, selector = null) {
+    let func = this.fn[key];
     if(typeof(func) == 'function') {
       let sel = selector || func.selector;
       if(sel) {
-        d.querySelectorAll(sel).forEach(function(el) {
-          func.with(el)
+        document.querySelectorAll(sel).forEach(el => {
+          func.with(el);
         });
       }
     }
   }
 
-  Object.keys(rules).forEach(k => { initialize(k); });
+  start(keys = [], exclude = true) {
+    let self = this;
+    Object.keys(keys).forEach(key => {
+      if(exclude ? !keys.includes(key) : keys.includes(key)) {
+        self._build(key);
+      }
+    });
+  }
+}
 
-  w.rules = rules;
-}( window, document ) );
+( function ( w ) {
+  w.rules = new Rules();
+}( window ) );
